@@ -4,13 +4,13 @@ import java.io.File;
 public class Main {
 
     public static void main(String[] args) {
-        int[][] matrix1 = MatrixGenerator.loadMatrixFromFile(new File("matrix1.txt"));
-        int[][] matrix2 = MatrixGenerator.loadMatrixFromFile(new File("matrix2.txt"));
-        int[][] result = new int[matrix1.length][matrix1[0].length];
+        int[][] matrix1 = MatrixGenerator.loadMatrixFromFile(new File("matrix3.txt"));
+        int[][] matrix2 = MatrixGenerator.loadMatrixFromFile(new File("matrix3.txt"));
 
         int option = 0;
 
         while (true) {
+            int[][] result = new int[matrix1.length][matrix1[0].length];
             option = Integer.parseInt(JOptionPane.showInputDialog(
                     """
                     Menú.
@@ -65,12 +65,15 @@ public class Main {
                     startTime = System.currentTimeMillis();
                     Algorithms.NaivLoopUnrollingFour(matrix1, matrix2, result, matrix1.length, matrix1[0].length, matrix2[0].length);
                     endTime = System.currentTimeMillis();
+                    printMatrix(result);
                     System.out.println("Tiempo de ejecución: " + (endTime - startTime) + " milisegundos");
                     break;
                 case 7:
                     startTime = System.currentTimeMillis();
-                    result = Algorithms.Strassen(matrix1, matrix2);
+                    GFG s = new GFG();
+                    result = s.multiply(matrix1, matrix2);
                     endTime = System.currentTimeMillis();
+                    printMatrix(result);
                     System.out.println("Tiempo de ejecución: " + (endTime - startTime) + " milisegundos");
                     break;
                 default:

@@ -9,7 +9,7 @@ public class MatrixGenerator {
 
     public static void main(String[] args) {
         // Crear un arrays de int
-        int[][] matrix = new int[2048][2048];
+        int[][] matrix = new int[4096][4096];
 
         // Llenar la matrix con números aleatorios
         Random random = new Random();
@@ -20,7 +20,7 @@ public class MatrixGenerator {
         }
 
         // Crear un archivo txt para guardar el arrays.array
-        File file = new File("matrix.txt");
+        File file = new File("matrix3.txt");
         try {
             // Crear un objeto PrintWriter para escribir en el archivo
             PrintWriter pw = new PrintWriter(file);
@@ -50,7 +50,15 @@ public class MatrixGenerator {
             ArrayList<ArrayList<Integer>> tempMatrix = new ArrayList<>();
             while (scanner.hasNextInt()) {
                 ArrayList<Integer> row = new ArrayList<>();
-                for (int j = 0; j < 2048 && scanner.hasNextInt(); j++) {
+
+                int tam=0;
+                switch (file.getName()) {
+                    case "matrix1.txt": tam = 1024; break;
+                    case "matrix2.txt": tam = 2048; break;
+                    case "matrix3.txt": tam = 4096; break;
+                }
+
+                for (int j = 0; j < tam && scanner.hasNextInt(); j++) {
                     row.add(scanner.nextInt());
                 }
                 tempMatrix.add(row);
